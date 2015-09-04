@@ -4,8 +4,8 @@ class CreateLocations < ActiveRecord::Migration
       t.references :trip
       t.string :name
       t.string :blog_url
-      t.integer :latitude
-      t.integer :longitude
+      t.float :latitude
+      t.float :longitude
       t.timestamps null: false
     end
   end
