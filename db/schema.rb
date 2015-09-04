@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150904142947) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "trips", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      null: false
     t.string   "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
