@@ -17,8 +17,11 @@ $(".blog-content-button").on('click', function(){
         scrollTop: $(".blog-content").offset().top
     }, 2000);
   }).error(function(data) {
-    var errorMessage = '<p class="ajax-error">Content not found, please try again. Be sure to use the full url like this: "http://www.wizard.codes/the-winnower-api/" or " http://blog.us.playstation.com/2015/08/09/the-drop-new-playstation-games-for-8112015/ "';
+    var errorMessage = '<p class="ajax-error">Content not found, please try again. Be sure to use the full url like this: "http://www.slovenia-trips.com/eng/rock-climbing/trip/1061/Trenta"</p>';
     $('.blog-content').empty();
     $('.blog-content').append(errorMessage);
+     $('html, body').animate({
+        scrollTop: $(".ajax").offset().top
+    }, 2000);
   });
 });
