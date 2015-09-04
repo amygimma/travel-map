@@ -5,12 +5,14 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @trip.locations.build
   end
 
   def create
+    binding.pry
     trip = Trip.new(trip_params)
     if trip.save
-      redirect_to trips_path, notice: "Successfully created your trip"
+      redirect_to trip, notice: "Successfully created your trip"
     else
       render :new, alert: trip.errors.full_messages.join(", ")
     end
@@ -23,6 +25,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :summary)
+    params.require(:trip).permit(:title, :summary, locations_attributes: [:name, :latitude, :longitude])
   end
 end

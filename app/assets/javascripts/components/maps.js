@@ -8,6 +8,20 @@ if($('#map').length > 0) {
     };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var marker;
+    function createMarker(coords, map, title){
+      marker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        title: title
+      });
+    }
+
+    var locations = [];
+    function getLocations () {
+
+    }
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 }

@@ -1,12 +1,22 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <h3>Trip Info:</h3>
     <%= simple_form_for @trip do |f| %>
       <%= f.error_notification %>
-
       <%= f.input :title %>
-
       <%= f.input :summary %>
 
+      <h4>Locations:</h4>
+      <ul>
+        <%= f.fields_for :locations do |locations_form| %>
+          <li>
+            <%= locations_form.input :name %>
+            <%= locations_form.input :latitude %>
+            <%= locations_form.input :longitude %>
+
+          </li>
+        <% end %>
+      </ul>
       <%= f.button :submit %>
     <% end %>
   </div>
