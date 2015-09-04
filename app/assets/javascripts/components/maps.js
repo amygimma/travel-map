@@ -3,11 +3,29 @@ if($('#map').length > 0) {
     var mapCanvas = document.getElementById('map');
     var mapOptions = {
       center: new google.maps.LatLng(44.5403, -78.5463),
-      zoom: 8,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.HYBRID
     };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+
+
+    var trip_id = $("#trip_id").data("tripId");
+    $.ajax({
+      url: "/api/trips/" + trip_id
+    }).done(function(data){
+      _.each(data, function(place){
+        var coords = { lat: place.latitude, lng: place.longitude };
+        var title = place.name;
+        var blog_url = place.blog_url;
+        var marker = new google.maps.Marker({
+          position: coords,
+          map: map,
+          title: title
+        });
+        map.panTo(marker.getPosition());
+      });
+    });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 }

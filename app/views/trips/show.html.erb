@@ -1,9 +1,12 @@
 <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
 
-<div id="map"></div>
+<div id="map" class="box-shadow"></div>
 
 <div class="row">
   <div class="col-md-12">
     <h3><%= @trip.title %></h3>
+    <%= render @trip.locations %>
   </div>
 </div>
+
+<div id="trip_id" data-trip-id="<%= @trip.id %>" ></div>
