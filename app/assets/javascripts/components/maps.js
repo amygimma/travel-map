@@ -19,26 +19,21 @@ if($('#map').length > 0) {
       });
     }
 
-    var locations = [];
-    function getLocations() {
-      var trip_id = $("#trip_id").data("tripId");
-      $.ajax({
-        url: "/api/trips/" + trip_id
-      }).done(function(data){
-        _.each(data, function(place){
-          var coords = { lat: place.latitude, lng: place.longitude }
-          var title = place.name;
-          var title = place.blog_url;
-
-          locations.push(coords);
-          console.log(locations);
-          debugger;
+    var trip_id = $("#trip_id").data("tripId");
+    $.ajax({
+      url: "/api/trips/" + trip_id
+    }).done(function(data){
+      _.each(data, function(place){
+        var coords = { lat: place.latitude, lng: place.longitude };
+        var title = place.name;
+        var blog_url = place.blog_url;
+        new google.maps.Marker({
+          position: coords,
+          map: map,
+          title: title
         });
       });
-    }
-
-    getLocations();
-
+    });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 }
