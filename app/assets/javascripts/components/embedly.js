@@ -2,7 +2,7 @@ $(".blog-content-button").on('click', function(){
   event.preventDefault();
   var url = event.target.href;
   var encodedUrl = encodeURIComponent(url);
-  var requestUrl = "http://api.embed.ly/1/extract?key=4d990bca1808406aa35f798781bc2c9b&url=" + encodedUrl;
+  var requestUrl = "https://api.embed.ly/1/extract?key=4d990bca1808406aa35f798781bc2c9b&url=" + encodedUrl;
 
   $.ajax({
     url: requestUrl
