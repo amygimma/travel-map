@@ -15,15 +15,17 @@ if($('#map').length > 0) {
       url: "/api/trips/" + trip_id
     }).done(function(data){
       _.each(data, function(place){
-        var coords = { lat: place.latitude, lng: place.longitude };
-        var title = place.name;
-        var blog_url = place.blog_url;
-        var marker = new google.maps.Marker({
-          position: coords,
-          map: map,
-          title: title
-        });
-        map.panTo(marker.getPosition());
+        if(place.latitude !== null && place.longitude !== null){
+          var coords = { lat: place.latitude, lng: place.longitude };
+          var title = place.name;
+          var blog_url = place.blog_url;
+          var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: title
+          });
+          map.panTo(marker.getPosition());
+        }
       });
     });
   }
