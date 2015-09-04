@@ -1,10 +1,11 @@
-<%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
+<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?sensor=false' %>
 
 <div id="map" class="box-shadow"></div>
 
 <div class="row">
   <div class="col-md-12">
-    <h3><%= @trip.title %></h3>
+    <h3><%= @trip.title %>  <%= link_to "Edit", edit_trip_path(@trip), class: "button btn-sm btn-warning" %> <%= link_to "Delete", trip_path(@trip), method: :delete, class: "button btn-sm btn-danger" %></h3>
+
     <%= render @trip.locations %>
   </div>
 </div>

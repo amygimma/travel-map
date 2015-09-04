@@ -1,1 +1,4 @@
-<%= location.name %>
+<h4><%= location.name %><h4>
+<% if location.blog_url %>
+  <%= link_to "Blog Post", location.blog_url, class: "button btn-sm btn-success" %>
+<% end %>
